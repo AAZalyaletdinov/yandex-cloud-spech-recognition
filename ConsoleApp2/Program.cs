@@ -10,14 +10,15 @@ namespace ConsoleApp2
     class Program
     {
         static string KEY = "keyFromHere_https://developer.tech.yandex.ru/keys/";
+
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World! ");
             var f = new FileStream("speech.wav", FileMode.Open, FileAccess.Read);
-            var g= PostMethod(f);
+            var g = PostMethod(f);
 
             Console.Write(g);
-            Console.ReadKey();            
+            Console.ReadKey();
         }
 
         //код взял отсюда http://www.cyberforum.ru/web-services-wcf/thread1310503.html
@@ -32,7 +33,7 @@ namespace ConsoleApp2
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(postUrl);
             request.Method = "POST";
             request.Host = "asr.yandex.net";
-            request.SendChunked = true;      
+            request.SendChunked = true;
             request.ContentType = "audio/x-wav";//"audio/x-pcm;bit=16;rate=16000";
             request.ContentLength = fs.Length;
 
